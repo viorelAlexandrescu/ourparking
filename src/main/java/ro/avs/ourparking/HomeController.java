@@ -1,41 +1,25 @@
 package ro.avs.ourparking;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ro.avs.ourparking.service.RolesService;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
 public class HomeController {
 
+    private RolesService rolesService;
+
     @Autowired
-    ObjectMapper objectMapper;
+    public HomeController(RolesService rolesService) {
+        this.rolesService = rolesService;
+    }
 
     @GetMapping("/home")
     public String getHome() throws IOException, ExecutionException, InterruptedException {
-        Firestore db = FirestoreClient.getFirestore();
-        // asynchronously retrieve all users
-        ApiFuture<QuerySnapshot> query = db.collection("Roles").get();
-        QuerySnapshot querySnapshot = query.get();
-        List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
-        ArrayNode array = objectMapper.createArrayNode();
-        for (QueryDocumentSnapshot document : documents) {
-            ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("id", document.getId());
-            objectNode.put("role", document.getString("role"));
-            array.add(objectNode);
-        }
-        return objectMapper.writeValueAsString(array);
+        return rolesService.getAllRolesAsJSONString();
     }
 }
