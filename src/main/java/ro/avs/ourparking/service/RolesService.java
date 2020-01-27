@@ -2,8 +2,6 @@ package ro.avs.ourparking.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.avs.ourparking.dao.RolesDAO;
@@ -25,18 +23,18 @@ public class RolesService {
     }
 
     public List<Role> getAllRoles() throws ExecutionException, InterruptedException {
-        return rolesDAO.getAllRoles();
+        return rolesDAO.getAllDocumentsParsedFromCollection();
     }
 
     public String getAllRolesAsJSONString() throws ExecutionException, InterruptedException, JsonProcessingException {
-        List<Role> roles = getAllRoles();
-        ArrayNode array = objectMapper.createArrayNode();
-        for (Role role : roles) {
-            ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("id", role.getId());
-            objectNode.put("role", role.getRole());
-            array.add(objectNode);
-        }
-        return objectMapper.writeValueAsString(array);
+        return objectMapper.writeValueAsString(getAllRoles());
+    }
+
+    public void addRole(Role role) {
+        rolesDAO.addDocument(role);
+    }
+
+    public Role getRoleById(String id) throws ExecutionException, InterruptedException {
+        return rolesDAO.getDocumentById(id);
     }
 }
