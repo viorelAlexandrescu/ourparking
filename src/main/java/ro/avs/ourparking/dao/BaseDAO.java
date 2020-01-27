@@ -3,12 +3,13 @@ package ro.avs.ourparking.dao;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
+import ro.avs.ourparking.model.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-abstract class BaseDAO<T> {
+public abstract class BaseDAO<T extends BaseEntity> {
     private static Firestore db;
 
     abstract protected String getCollectionName();
@@ -42,11 +43,11 @@ abstract class BaseDAO<T> {
     }
 
     public void updateDocument(T entry) {
-        getCollection().add(entry);
+        getCollection().document(entry.getId()).set(entry);
     }
 
-    public void deleteDocument(T entry) {
-        getCollection().add(entry);
+    public void deleteDocument(String id) {
+        getCollection().document(id).delete();
     }
 
     public T getDocumentById(String id) throws ExecutionException, InterruptedException {
