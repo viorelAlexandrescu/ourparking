@@ -18,9 +18,14 @@ public class ReservationDAO extends BaseDAO<Reservation> {
                 document.getId(),
                 document.getString("carId"),
                 document.getString("parkingSpaceId"),
+                document.getString("userId"),
                 document.getLong("reservedHours"),
                 document.getDate("reservationDateTimeStart"),
                 document.getDate("dateTimeCreated")
         );
     }
+
+//    public List<Reservation> getAllReservationsByUser(String userId) {
+//        //TODO write quuery
+//    }
 }
