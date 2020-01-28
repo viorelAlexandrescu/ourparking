@@ -3,6 +3,7 @@ package ro.avs.ourparking.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ro.avs.fgca.model.BaseEntity;
 
 @Getter
 @Setter

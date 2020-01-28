@@ -2,6 +2,7 @@ package ro.avs.ourparking.dao;
 
 import com.google.cloud.firestore.DocumentSnapshot;
 import org.springframework.stereotype.Repository;
+import ro.avs.fgca.dao.BaseDAO;
 import ro.avs.ourparking.model.Role;
 
 @Repository
