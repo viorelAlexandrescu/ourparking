@@ -9,10 +9,10 @@ import ro.avs.fgca.model.BaseEntity;
 @Setter
 @NoArgsConstructor
 public class FuelType extends BaseEntity {
-    private String fuelId;
+    private String name;
 
-    public FuelType(String id, String fuelId) {
+    public FuelType(String id, String name) {
         super(id);
-        this.fuelId = fuelId;
+        this.name = name;
     }
 }

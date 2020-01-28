@@ -17,7 +17,7 @@ public class FuelTypeDAO extends BaseDAO<FuelType> {
     protected FuelType parseDocument(DocumentSnapshot document) {
         return new FuelType(
                 document.getId(),
-                document.getString("fuelId")
+                document.getString("name")
         );
     }
 }
