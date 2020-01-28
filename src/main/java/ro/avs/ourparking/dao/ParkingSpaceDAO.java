@@ -19,7 +19,9 @@ public class ParkingSpaceDAO extends BaseDAO<ParkingSpace> {
                 document.getString("name"),
                 document.getBoolean("rechargeable"),
                 document.getString("parkingLotId"),
-                document.getString("disabilityType")
+                document.getString("disabilityType"),
+                document.getBoolean("valid"),
+                document.getBoolean("vacant")
         );
     }
 }

@@ -14,12 +14,16 @@ public class ParkingSpace extends BaseEntity {
     private Boolean rechargeable;
     private String parkingLotId;
     private String disabilityType;
+    private Boolean valid;
+    private Boolean vacant;
 
-    public ParkingSpace(String id, String name, Boolean rechargeable, String parkingLotId, String disabilityType) {
+    public ParkingSpace(String id, String name, Boolean rechargeable, String parkingLotId, String disabilityType, Boolean valid, Boolean vacant) {
         super(id);
         this.name = name;
         this.rechargeable = rechargeable;
         this.parkingLotId = parkingLotId;
         this.disabilityType = disabilityType;
+        this.valid = valid;
+        this.vacant = vacant;
     }
 }
