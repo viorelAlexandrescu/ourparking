@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "app.config.dbUrl",
+      "type": "java.lang.String",
+      "description": "Firestore database URL."
+    },
+    {
+      "name": "app.config.apiKeyPath",
+      "type": "java.lang.String",
+      "description": "This is the location of the API key generated from the Firebase portal."
+    }
+  ] }
