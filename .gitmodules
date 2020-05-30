@@ -1,0 +1,3 @@
+[submodule "firestore-generic-crud-api"]
+	path = firestore-generic-crud-api
+	url = https://github.com/viorelAlexandrescu/firestore-generic-crud-api

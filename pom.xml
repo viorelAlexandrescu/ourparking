@@ -51,6 +51,12 @@
 			<artifactId>firebase-admin</artifactId>
 			<version>6.11.0</version>
 		</dependency>
+		<dependency>
+			<groupId>ro.avs</groupId>
+			<artifactId>firestore-generic-crud-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -62,4 +68,7 @@
 		</plugins>
 	</build>
 
+	<modules>
+		<module>firestore-generic-crud-api</module>
+	</modules>
 </project>
