@@ -23,7 +23,7 @@ public class UserNotificationScheduler {
     }
 
     // once every two minutes
-    @Scheduled(fixedRate = 120000)
+//    @Scheduled(fixedRate = 120000)
     public void checkForMail() {
         try {
             List<UserNotification> userNotificationList = userNotificationService.getAll();
